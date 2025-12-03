@@ -17,8 +17,6 @@ st.set_page_config(layout="wide", page_title="매출 대시보드")
 # -------------------------------------------------------------------------
 @st.cache_data
 def load_data():
-
-def load_data():
     base_path = Path(__file__).parent  # 현재 파일이 있는 폴더
 
     before = pd.read_csv(base_path / "before.csv")
@@ -305,4 +303,5 @@ chart = (
 
 
 st.altair_chart(chart, use_container_width=True)
+
 
