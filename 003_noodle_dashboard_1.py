@@ -17,10 +17,13 @@ st.set_page_config(layout="wide", page_title="매출 대시보드")
 # -------------------------------------------------------------------------
 @st.cache_data
 def load_data():
-    # 실제 데이터 로드
-    before = pd.read_csv("busan_yakkong_milmyeon/before.csv")
-    after = pd.read_csv("busan_yakkong_milmyeon/after_with_predictions.csv")
-    corr_df = pd.read_csv("busan_yakkong_milmyeon/monthly_correlation.csv")
+
+def load_data():
+    base_path = Path(__file__).parent  # 현재 파일이 있는 폴더
+
+    before = pd.read_csv(base_path / "before.csv")
+    after = pd.read_csv(base_path / "after_with_predictions.csv")
+    corr_df = pd.read_csv(base_path / "monthly_correlation.csv")
     
     corr_df.sort_values("corr", ascending=False,inplace=True)
     before['tm'] = pd.to_datetime(before['tm'])
@@ -302,3 +305,4 @@ chart = (
 
 
 st.altair_chart(chart, use_container_width=True)
+
