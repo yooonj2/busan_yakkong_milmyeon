@@ -18,9 +18,9 @@ st.set_page_config(layout="wide", page_title="매출 대시보드")
 @st.cache_data
 def load_data():
     # 실제 데이터 로드
-    before = pd.read_csv(r"C:\Users\한윤지\Desktop\BP\001_data\01_noodle_data\before.csv")
-    after = pd.read_csv(r"C:\Users\한윤지\Desktop\BP\001_data\01_noodle_data\after_with_predictions.csv")
-    corr_df = pd.read_csv(r"C:\Users\한윤지\Desktop\BP\001_data\01_noodle_data\monthly_correlation.csv")
+    before = pd.read_csv("busan_yakkong_milmyeon/before.csv")
+    after = pd.read_csv("busan_yakkong_milmyeon/after_with_predictions.csv")
+    corr_df = pd.read_csv("busan_yakkong_milmyeon/monthly_correlation.csv")
     
     corr_df.sort_values("corr", ascending=False,inplace=True)
     before['tm'] = pd.to_datetime(before['tm'])
@@ -299,5 +299,6 @@ chart = (
         title="📈 카테고리별 매출 스트림그래프 (Streamgraph)"
     )
 )
+
 
 st.altair_chart(chart, use_container_width=True)
